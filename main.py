@@ -2,9 +2,8 @@ import datetime as dt
 import smtplib
 import calendar
 import random
-
-# credentials
-
+'''To protect private credentials, sensitive information has been stored on my personal laptop and only the necessary code is shared.'''
+from secrets import *
 
 # random quotes
 quotes = open("quotes.txt").read().splitlines()
@@ -25,7 +24,8 @@ if day=="Saturday":
         # login
         connection.login(user=my_email, password=password)
         connection.sendmail(from_addr=my_email,
-        to_addrs="siphecoded@gmail.com",
+        to_addrs=send_to_address,
         msg=f'Subject: Saturday Motivation\n\n{quotes}'
                              )
-
+else:
+    print(f"Today is {day}")
